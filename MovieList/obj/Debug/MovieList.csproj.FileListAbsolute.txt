@@ -1,0 +1,10 @@
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\bin\Debug\MovieList.exe.config
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\bin\Debug\MovieList.exe
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\bin\Debug\MovieList.pdb
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.csprojResolveAssemblyReference.cache
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.Form1.resources
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.Options.resources
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.Properties.Resources.resources
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.csproj.GenerateResource.Cache
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.exe
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.pdb
