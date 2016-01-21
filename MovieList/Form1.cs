@@ -43,30 +43,21 @@ namespace MovieList
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Look for start up options txt
-            string startUpFile = "StartUpOptions.txt";
+            createLogFile();
+            startUp();
+        }
 
-            if(File.Exists(startUpFile))
+        private void createLogFile()
+        {
+            if (File.Exists("ErrorLog.txt"))
             {
-                string json = System.IO.File.ReadAllText(startUpFile);
-
-                startUpOptions = JsonConvert.DeserializeObject<OptionDetails>(json);
-
-                if (startUpOptions.startUp == "Movies Wanted")
-                {
-                    loadMoviesWanted();
-                }
-                else
-                {
-                    loadMoviesObtained();
-                }
 
             }
             else
             {
-
+                System.IO.File.WriteAllText("ErrorLog.txt", "Error Log Created on: " + DateTime.Now);
+                System.IO.File.AppendAllText("ErrorLog.txt", "\r\n------------------\r\n");
             }
-
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,15 +124,24 @@ namespace MovieList
             this.Text = startUpOptions.startUp.ToString();
             toolStrpView.Text = "View: " + startUpOptions.startUp.ToString();
 
-            string moviesObtainedJson = System.IO.File.ReadAllText("MoviesObtained.txt");
 
-            newMovieList.Clear();
-
-            newMovieList = JsonConvert.DeserializeObject<List<Movie>>(moviesObtainedJson);
-
-            foreach (Movie movie in newMovieList)
+            try
             {
-                movieDataGridView1.Rows.Add(movie.title, movie.rating, movie.format);
+                string moviesObtainedJson = System.IO.File.ReadAllText("MoviesObtained.txt");
+
+                newMovieList.Clear();
+
+                newMovieList = JsonConvert.DeserializeObject<List<Movie>>(moviesObtainedJson);
+
+                foreach (Movie movie in newMovieList)
+                {
+                    movieDataGridView1.Rows.Add(movie.title, movie.rating, movie.format);
+                }
+            }
+            catch(SystemException ex)
+            {
+                System.IO.File.AppendAllText("ErrorLog.txt", ex.ToString());
+                System.IO.File.AppendAllText("ErrorLog.txt", "\r\n------------------\r\n");
             }
         }
 
@@ -181,7 +181,36 @@ namespace MovieList
             }
 
             loadMoviesObtained();
-
         }
+
+        private void startUp()
+        {
+            //Look for start up options txt
+            string startUpFile = "StartUpOptions.txt";
+
+            if (File.Exists(startUpFile))
+            {
+                string json = System.IO.File.ReadAllText(startUpFile);
+
+                startUpOptions = JsonConvert.DeserializeObject<OptionDetails>(json);
+
+                if (startUpOptions.startUp == "Movies Wanted")
+                {
+                    loadMoviesWanted();
+                }
+                else
+                {
+                    loadMoviesObtained();
+                }
+
+            }
+            else
+            {
+                startUpOptions = new OptionDetails();
+                startUpOptions.startUp = "Movies Obtained";
+                loadMoviesObtained();
+            }
+        }
+
     }
 }
