@@ -139,12 +139,14 @@
             this.moviesWantedToolStripMenuItem.Name = "moviesWantedToolStripMenuItem";
             this.moviesWantedToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.moviesWantedToolStripMenuItem.Text = "Movies Wanted";
+            this.moviesWantedToolStripMenuItem.Click += new System.EventHandler(this.moviesWantedToolStripMenuItem_Click);
             // 
             // moviesHadToolStripMenuItem
             // 
             this.moviesHadToolStripMenuItem.Name = "moviesHadToolStripMenuItem";
             this.moviesHadToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.moviesHadToolStripMenuItem.Text = "Movies Obtained";
+            this.moviesHadToolStripMenuItem.Click += new System.EventHandler(this.moviesHadToolStripMenuItem_Click);
             // 
             // MovieTitle
             // 

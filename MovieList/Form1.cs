@@ -28,10 +28,17 @@ namespace MovieList
            
             Options newOptions = new Options();
 
+            newOptions.FormClosing += NewOptions_FormClosing;
+
             newOptions.Show();
 
             this.WindowState = FormWindowState.Minimized;
 
+        }
+
+        private void NewOptions_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,22 +54,11 @@ namespace MovieList
 
                 if (startUpOptions.startUp == "Movies Wanted")
                 {
-                    this.Text = "Movies Wanted";
-                    toolStrpView.Text = "View: Movies Wanted";
-
-                    string moviesWantedJson = System.IO.File.ReadAllText("MoviesWanted.txt");
-
-                    List<Movie> newMovieList = JsonConvert.DeserializeObject<List<Movie>>(moviesWantedJson);
-
-                    foreach(Movie movie in newMovieList)
-                    {
-                        movieDataGridView1.Rows.Add(movie.title, movie.rating, movie.format);
-                    }
-
+                    loadMoviesWanted();
                 }
                 else
                 {
-                    toolStrpView.Text = "View: Movies Obtained";
+                    loadMoviesObtained();
                 }
 
             }
@@ -120,7 +116,7 @@ namespace MovieList
             }
             else
             {
-
+                System.IO.File.WriteAllText("MoviesObtained.txt", json);
             }
         }
 
@@ -130,6 +126,62 @@ namespace MovieList
             {
                 movieDataGridView1.Rows.RemoveAt(item.Index);
             }
+        }
+
+        private void loadMoviesObtained()
+        {
+            this.Text = startUpOptions.startUp.ToString();
+            toolStrpView.Text = "View: " + startUpOptions.startUp.ToString();
+
+            string moviesObtainedJson = System.IO.File.ReadAllText("MoviesObtained.txt");
+
+            newMovieList.Clear();
+
+            newMovieList = JsonConvert.DeserializeObject<List<Movie>>(moviesObtainedJson);
+
+            foreach (Movie movie in newMovieList)
+            {
+                movieDataGridView1.Rows.Add(movie.title, movie.rating, movie.format);
+            }
+        }
+
+        private void loadMoviesWanted()
+        {
+            this.Text = "Movies Wanted";
+            toolStrpView.Text = "View: Movies Wanted";
+
+            string moviesWantedJson = System.IO.File.ReadAllText("MoviesWanted.txt");
+
+            newMovieList.Clear();
+
+            newMovieList = JsonConvert.DeserializeObject<List<Movie>>(moviesWantedJson);
+
+            foreach (Movie movie in newMovieList)
+            {
+                movieDataGridView1.Rows.Add(movie.title, movie.rating, movie.format);
+            }
+        }
+
+        private void moviesWantedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (movieDataGridView1.Rows.Count > 0)
+            {
+                movieDataGridView1.Rows.Clear();
+            }
+
+            loadMoviesWanted();
+
+        }
+
+        private void moviesHadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (movieDataGridView1.Rows.Count > 0)
+            {
+                movieDataGridView1.Rows.Clear();
+            }
+
+            loadMoviesObtained();
+
         }
     }
 }
