@@ -8,3 +8,5 @@ C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.P
 C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.csproj.GenerateResource.Cache
 C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.exe
 C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\obj\Debug\MovieList.pdb
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jshay\OneDrive\Development\C#\MovieList\MovieList\bin\Debug\Newtonsoft.Json.xml
