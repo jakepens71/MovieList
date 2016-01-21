@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdMoviesWanted = new System.Windows.Forms.RadioButton();
+            this.rdMoviesObtained = new System.Windows.Forms.RadioButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rdMoviesObtained = new System.Windows.Forms.RadioButton();
-            this.rdMoviesWanted = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Startup";
+            // 
+            // rdMoviesWanted
+            // 
+            this.rdMoviesWanted.AutoSize = true;
+            this.rdMoviesWanted.Location = new System.Drawing.Point(52, 65);
+            this.rdMoviesWanted.Name = "rdMoviesWanted";
+            this.rdMoviesWanted.Size = new System.Drawing.Size(100, 17);
+            this.rdMoviesWanted.TabIndex = 1;
+            this.rdMoviesWanted.TabStop = true;
+            this.rdMoviesWanted.Text = "Movies Wanted";
+            this.rdMoviesWanted.UseVisualStyleBackColor = true;
+            // 
+            // rdMoviesObtained
+            // 
+            this.rdMoviesObtained.AutoSize = true;
+            this.rdMoviesObtained.Location = new System.Drawing.Point(52, 30);
+            this.rdMoviesObtained.Name = "rdMoviesObtained";
+            this.rdMoviesObtained.Size = new System.Drawing.Size(105, 17);
+            this.rdMoviesObtained.TabIndex = 0;
+            this.rdMoviesObtained.TabStop = true;
+            this.rdMoviesObtained.Text = "Movies Obtained";
+            this.rdMoviesObtained.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -65,28 +87,6 @@
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // rdMoviesObtained
-            // 
-            this.rdMoviesObtained.AutoSize = true;
-            this.rdMoviesObtained.Location = new System.Drawing.Point(52, 30);
-            this.rdMoviesObtained.Name = "rdMoviesObtained";
-            this.rdMoviesObtained.Size = new System.Drawing.Size(105, 17);
-            this.rdMoviesObtained.TabIndex = 0;
-            this.rdMoviesObtained.TabStop = true;
-            this.rdMoviesObtained.Text = "Movies Obtained";
-            this.rdMoviesObtained.UseVisualStyleBackColor = true;
-            // 
-            // rdMoviesWanted
-            // 
-            this.rdMoviesWanted.AutoSize = true;
-            this.rdMoviesWanted.Location = new System.Drawing.Point(52, 65);
-            this.rdMoviesWanted.Name = "rdMoviesWanted";
-            this.rdMoviesWanted.Size = new System.Drawing.Size(100, 17);
-            this.rdMoviesWanted.TabIndex = 1;
-            this.rdMoviesWanted.TabStop = true;
-            this.rdMoviesWanted.Text = "Movies Wanted";
-            this.rdMoviesWanted.UseVisualStyleBackColor = true;
-            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,6 +97,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Options";
             this.Text = "Options";
+            this.Load += new System.EventHandler(this.Options_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
